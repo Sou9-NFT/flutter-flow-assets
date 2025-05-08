@@ -1,7 +1,7 @@
 import os
 import time
 
-BASE_URL = "https://thelime1.github.io/flutter-flow-assets/"
+BASE_URL = "https://sou9-nft.github.io/flutter-flow-assets/"
 INDEX_FILE = "index.html"
 ASSETS_FOLDER = "assets"
 
