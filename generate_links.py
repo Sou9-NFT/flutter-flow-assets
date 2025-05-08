@@ -2,15 +2,15 @@ import os
 
 BASE_URL = "https://thelime1.github.io/flutter-flow-assets/"
 INDEX_FILE = "index.html"
+ASSETS_FOLDER = "assets"
 
-# Generate links for all assets in the root folder
+# Generate links for all assets in the assets folder
 def generate_links():
     links = []
-    for root, _, files in os.walk("."):
+    for root, _, files in os.walk(ASSETS_FOLDER):
         for file in files:
-            if file != INDEX_FILE:  # Exclude the index.html file itself
-                relative_path = os.path.relpath(os.path.join(root, file), ".")
-                links.append(f"<li><a href=\"{BASE_URL}{relative_path}\">{relative_path}</a></li>")
+            relative_path = os.path.relpath(os.path.join(root, file), ASSETS_FOLDER)
+            links.append(f"<li><a href=\"{BASE_URL}{ASSETS_FOLDER}/{relative_path}\">{relative_path}</a></li>")
     return links
 
 # Write the links to the index.html file
