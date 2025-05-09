@@ -10,19 +10,19 @@ ASSETS_FOLDER = "assets"
 
 def generate_links():
     links = []
-    timestamp = int(time.time())  # Generate a timestamp
     for root, _, files in os.walk(ASSETS_FOLDER):
         for file in files:
             relative_path = os.path.relpath(
                 os.path.join(root, file), ASSETS_FOLDER)
             links.append(
-                f"<li><a href=\"{BASE_URL}{ASSETS_FOLDER}/{relative_path}?v={timestamp}\">{relative_path}</a></li>")
+                f"<li><a href=\"{BASE_URL}{ASSETS_FOLDER}/{relative_path}\">{relative_path}</a></li>")
     return links
 
 # Write the links to the index.html file
 
 
 def write_index_file(links):
+    timestamp = int(time.time())  # Generate a timestamp
     with open(INDEX_FILE, "w") as f:
         f.write("<!DOCTYPE html>\n")
         f.write("<html lang=\"en\">\n")
@@ -30,7 +30,12 @@ def write_index_file(links):
         f.write("    <meta charset=\"UTF-8\">\n")
         f.write(
             "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n")
-        f.write("    <title>Asset Links</title>\n")
+        f.write(
+            "    <meta http-equiv=\"Cache-Control\" content=\"no-cache, no-store, must-revalidate\">\n")
+        f.write("    <meta http-equiv=\"Pragma\" content=\"no-cache\">\n")
+        f.write("    <meta http-equiv=\"Expires\" content=\"0\">\n")
+        f.write(f"    <meta name=\"version\" content=\"{timestamp}\">\n")
+        f.write(f"    <title>Asset Links v?={timestamp}</title>\n")
         f.write("</head>\n")
         f.write("<body>\n")
         f.write("    <h1>Asset Links</h1>\n")
@@ -44,6 +49,7 @@ def write_index_file(links):
 
 
 def clear_index_file():
+    timestamp = int(time.time())  # Generate a timestamp
     if os.path.exists(INDEX_FILE):
         with open(INDEX_FILE, "w") as f:
             f.write("<!DOCTYPE html>\n")
@@ -52,7 +58,12 @@ def clear_index_file():
             f.write("    <meta charset=\"UTF-8\">\n")
             f.write(
                 "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n")
-            f.write("    <title>Asset Links</title>\n")
+            f.write(
+                "    <meta http-equiv=\"Cache-Control\" content=\"no-cache, no-store, must-revalidate\">\n")
+            f.write("    <meta http-equiv=\"Pragma\" content=\"no-cache\">\n")
+            f.write("    <meta http-equiv=\"Expires\" content=\"0\">\n")
+            f.write(f"    <meta name=\"version\" content=\"{timestamp}\">\n")
+            f.write(f"    <title>Asset Links v?={timestamp}</title>\n")
             f.write("</head>\n")
             f.write("<body>\n")
             f.write("    <h1>Asset Links</h1>\n")
