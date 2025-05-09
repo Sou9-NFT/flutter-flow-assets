@@ -3,7 +3,7 @@ import time
 
 BASE_URL = "https://sou9-nft.github.io/flutter-flow-assets/"
 INDEX_FILE = "index.html"
-README_FILE = "redme.md"  # Note the filename as seen in the workspace
+README_FILE = "readme.md"  # Note the filename as seen in the workspace
 ASSETS_FOLDER = "assets"
 
 # Generate links for all assets in the assets folder
